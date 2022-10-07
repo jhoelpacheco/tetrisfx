@@ -22,9 +22,11 @@ public class tetris extends Application{
         ResourceBundle resource = null;
         FXMLLoader fxmlLoader = new FXMLLoader(location, resource);
         Parent root = fxmlLoader.load();
+        
         GuiController c = fxmlLoader.getController();
         stage.getIcons().add(new Image("resources/icon.png"));
         stage.setTitle("T E T R I S");
+        stage.setResizable(false);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
