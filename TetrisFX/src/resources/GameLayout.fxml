@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:controller="tetrisfx.GuiController" xmlns:fx="http://javafx.com/fxml/1" prefHeight="472" prefWidth="380" xmlns="http://javafx.com/javafx/18">
+    <BorderPane styleClass="gameBoard">
+        <center>
+            <GridPane fx:id="gamePanel"/>
+        </center>
+    </BorderPane>
+    <VBox alignment="CENTER" layoutX="243" layoutY="20" styleClass="vbox">
+        <VBox alignment="CENTER">
+            <Label styleClass="scoreClass" text="Score:     0" />
+            <Text styleClass="scoreClass" text="Lines:      0" />
+        </VBox>
+        <VBox alignment="BASELINE_CENTER" prefHeight="270.0" prefWidth="100.0">
+            <Button prefHeight="69.0" prefWidth="82.0" text="New Game" />
+            <ToggleButton prefHeight="41.0" prefWidth="57.0" text="Pause" />
+        </VBox>
+        
+    </VBox>
+    
+    <stylesheets>
+        <URL value="@window_slyte.css" />
+    </stylesheets>
+</Pane>
