@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 
+//SETS UP THE DIMENSIONS OF THE GRID BY DECLARING RECTANGLES [10x22]
 public class GuiController {
     
     private static final int BRICK_SIZE =20;

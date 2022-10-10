@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class tetris extends Application{
+    
+    //MAIN LAUNCH
     public static void main(String[] args){
         launch(args);
     }
@@ -18,19 +20,28 @@ public class tetris extends Application{
     @Override
     public void start(Stage stage) throws IOException{
         
+        //IMPORTS WINDOW DIMENSIONS AND SCORE/LINE DATA FROM GAMELAYOUT.FXML, LOADS INTO PARENT ROOT
         URL location = getClass().getClassLoader().getResource("resources/GameLayout.fxml");
         ResourceBundle resource = null;
         FXMLLoader fxmlLoader = new FXMLLoader(location, resource);
         Parent root = fxmlLoader.load();
         
+        //IMPORTS USER INTERFACE
         GuiController c = fxmlLoader.getController();
+        
+        //ADDS APP ICON AND TITLE FOR TOP LEFT WINDOW
         stage.getIcons().add(new Image("resources/icon.png"));
         stage.setTitle("T E T R I S");
+        
+        //DISABLES WINDOW EXPANDING
         stage.setResizable(false);
+        
+        //SETS SCENE WITH SPECIFIED WINDOW SIZES ON ROOT
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
         
+        //IMPORTS CONTROLS (IN PROGRESS)
         GameController gameController = new GameController(c);
     }
 }
