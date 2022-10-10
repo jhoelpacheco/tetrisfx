@@ -22,3 +22,12 @@ In Tetris, players complete lines by moving differently shaped pieces (tetromino
 ## ORGANIZATION 
 
 Link => https://trello.com/b/KTpdG1Oo/tetris
+
+
+## ASSIGNED TEACHERS
+Eduard Lara | eduard.lara@iesjoandaustria.org
+Jose Luís Castillo | joseluis.castillo@iesjoandaustria.org
+Moisès Gómez | moises.gomez@iesjoandaustria.org
+Oriol Jauma | oriol.jauma@iesjoandaustria.org
+Jordi Quesada | jordi.quesada@iesjoandaustria.org
+Jose Luis Hernandez | juanluis.hernandez@iesjoandaustria.org
