@@ -17,6 +17,7 @@ In Tetris, players complete lines by moving differently shaped pieces (tetromino
             Static stage
             Buttons
             Score
+            User
     
 ## ORGANIZATION 
 
