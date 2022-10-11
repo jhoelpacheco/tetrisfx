@@ -13,6 +13,7 @@ public class Piece
     private String name;
     public int form = 1;
     
+    //PIECE CONSTRUCTOR
     public Piece(Rectangle a, Rectangle b, Rectangle c, Rectangle d, String name)
     {
             this.a = a;
@@ -21,6 +22,8 @@ public class Piece
             this.d = d;
             this.name = name;
     }
+    
+    //SETS COLOR OF THE PIECE DEPENDING ON NAME
     public void setColor()
     {
         switch(name)
@@ -50,6 +53,7 @@ public class Piece
         this.d.setFill(color);
     }
 
+    //GET & SET FOR THE NAME
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     
