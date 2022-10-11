@@ -8,17 +8,22 @@ import javafx.scene.layout.GridPane;
 //SETS UP THE DIMENSIONS OF THE GRID BY DECLARING RECTANGLES [10x22]
 public class GuiController {
     
-    private static final int BRICK_SIZE =20;
+    //cells size [20px]
+    private static final int CELLS_SIZE =20;
     
     @FXML
     private GridPane gamePanel;
     
     public void initGameView(){
-        for(int i=2; i<25; i++){
+        for(int i=0; i<22; i++){
             for (int j=0; j<10; j++){
-                Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
-                rectangle .setFill(Color.TRANSPARENT);
-                gamePanel.add(rectangle, j, i -2);
+                Rectangle rectangle = new Rectangle(CELLS_SIZE, CELLS_SIZE);
+                
+                //background color and cell margin
+                rectangle.setFill(Color.rgb(100, 100, 100));
+                rectangle.setStyle("-fx-stroke: black; -fx-stroke-width: 0.5;");
+                
+                gamePanel.add(rectangle, j, i);
             }
         }
     }
