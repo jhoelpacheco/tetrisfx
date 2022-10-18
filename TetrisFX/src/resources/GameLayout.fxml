@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:controller="tetrisfx.GuiController" xmlns:fx="http://javafx.com/fxml/1" prefHeight="472" prefWidth="380" xmlns="http://javafx.com/javafx/18">
+
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="tetrisfx.GuiController" prefHeight="474" prefWidth="380" xmlns="http://javafx.com/javafx/18">
+    <GridPane fx:id="brickPanel" vgap="1" hgap="1"  /> 
     <BorderPane styleClass="gameBoard">
         <center>
             <GridPane fx:id="gamePanel"/>
