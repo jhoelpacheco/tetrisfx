@@ -31,7 +31,7 @@ public class tetris extends Application{
         
         //ADDS APP ICON AND TITLE FOR TOP LEFT WINDOW
         stage.getIcons().add(new Image("resources/icon.png"));
-        stage.setTitle("T E T R I S");
+        stage.setTitle("FX Tetris");
         
         //DISABLES WINDOW EXPANDING
         stage.setResizable(false);
@@ -43,5 +43,6 @@ public class tetris extends Application{
         
         //IMPORTS CONTROLS (IN PROGRESS)
         GameController gameController = new GameController(c);
+        GuiController guiController = new GuiController();
     }
 }

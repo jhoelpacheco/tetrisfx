@@ -1,38 +1,52 @@
 package logic;
 
-import logic.bricks.Brick;
-import logic.bricks.BrickGenerator;
+import bricks.RandomBrickGenerator;
+import java.awt.Point;
+import bricks.Brick;
 
-public class SimpleBoard {
+public class SimpleBoard 
+{
     private final int width;
-    private final int heigth;
+    private final int height;
     private int[][] currentGameMatrix;
-    private BrickGenerator brickGen;
+    private final RandomBrickGenerator brickGenerator;
     private Brick brick;
     private int currentShape = 0;
+    private Point currentOffSet;
+    private Score score;
     
-    public SimpleBoard(int width, int heigth){
+    public SimpleBoard(int width, int height)
+    {
         this.width = width;
-        this.heigth = heigth;
-        currentGameMatrix = new int[width][heigth];
-        brickGen = new BrickGenerator();
+        this.height = height;
+        currentGameMatrix = new int[width][height];
+        brickGenerator = new RandomBrickGenerator();
+        score = new Score();
     }
     
-    public boolean newBrick(){
-        Brick currentBrick = brickGen.getBrick();
+    public void setBrick(Brick brick) { this.brick = brick; }
+    
+    public int[][] getCurrentShape() { return this.brick.getBrickMatrix().get(currentShape); }
+    
+    public boolean createNewBrick()
+    {
+        Brick currentBrick = brickGenerator.getBrick();
         setBrick(currentBrick);
+        currentOffSet = new Point(3, 0);
         return true;
     }
-
-    public void setBrick(Brick brick) {
-        this.brick = brick;
-    }
     
-    public int[][] getCurrentShape(){
-        return this.brick.getBrickMatrix().get(currentShape);
-    }
+    public int [][] getBoardMatrix() { return currentGameMatrix; }
     
-    public int[][] getBoardMatrix(){
-        return currentGameMatrix;
+    public Score getScore() { return score; }
+    
+    public ViewData getViewData() { return new ViewData(getCurrentShape(), currentOffSet.x, currentOffSet.y); }
+    
+    public void moveBrickDown()
+    {
+        Point p = new Point(currentOffSet);
+        p.translate(0, 1);
+        currentOffSet = p;
+        boolean conflict = MatrixOperations.intersects(currentGameMatrix, getCurrentShape(), p.x, p.y);
     }
 }

@@ -5,7 +5,13 @@
 
 In Tetris, players complete lines by moving differently shaped pieces (tetrominoes), which descend onto the playing field. The completed lines disappear and grant the player points, and the player can proceed to fill the vacated spaces. The game ends when the uncleared lines reach the top of the playing field.
 
+### Image Sprint 1
+
 ![Image text](https://github.com/vfalcon6/tetris/blob/main/img.png)
+
+### Image Sprint 2
+
+![](https://github.com/vfalcon6/tetris/blob/main/tetrisS2.gif)
 
 ## TECNOLOGIES
 
@@ -18,6 +24,12 @@ In Tetris, players complete lines by moving differently shaped pieces (tetromino
             Buttons
             Score
             User
+            
+    -  (2º SPRINT)
+            Create brick
+            Add brick to panel game
+            Add drop motion to brick
+            Add limit falling bricks
     
 ## ORGANIZATION 
 
