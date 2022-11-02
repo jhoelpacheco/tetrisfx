@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 //class that generates a random brick
-public class BrickGenerator {
+public class RandomBrickGenerator {
     private final List<Brick> brickList;
     private final Deque<Brick> nextBrick = new ArrayDeque<>();
     
-    public BrickGenerator(){
+    public RandomBrickGenerator(){
         brickList = new ArrayList<>();
         
         //brickList.add(new IBrick());

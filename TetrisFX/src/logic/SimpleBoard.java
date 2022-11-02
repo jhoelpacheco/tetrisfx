@@ -1,8 +1,8 @@
 package logic;
 
-import bricks.RandomBrickGenerator;
+import logic.bricks.RandomBrickGenerator;
 import java.awt.Point;
-import bricks.Brick;
+import logic.bricks.Brick;
 
 public class SimpleBoard 
 {
