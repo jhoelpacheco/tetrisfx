@@ -1,9 +1,9 @@
 package tetrisfx;
 
 
-import logic.ViewData;
-import logic.SimpleBoard;
-import logic.InputEventListener;
+import Events.EventSource;
+import Events.MoveEvent;
+import logic.*;
 
 public class GameController implements InputEventListener{
     private final GuiController viewController;
@@ -17,12 +17,28 @@ public class GameController implements InputEventListener{
         this.viewController.initGameView(board.getBoardMatrix(), board.getViewData());
         this.viewController.bindScore(board.getScore().scoreProperty());
     }
-    
     @Override
-    public ViewData onDownEvent()
-    {
-        board.moveBrickDown();
+    public ViewData onDownEvent(MoveEvent event) {
+        boolean canMove = board.moveBrickDown();
+        ClearRow clearRow = null;
+        if(!canMove) {
+            board.mergeBrickToBackground();
+            board.createNewBrick();
+        }else{
+            if(event.getEventSource() == EventSource.USER){
+                board.getScore().add(1);
+            }
+        }
+
+        viewController.refreshGameBackground(board.getBoardMatrix());
+
         return board.getViewData();
     }
-    
+
+    @Override
+    public ViewData onLeftEvent() {
+        board.moveBrickLeft();
+        return board.getViewData();
+    }
+
 }

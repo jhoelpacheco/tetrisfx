@@ -16,5 +16,4 @@ public class ViewData
     public int[][] getBrickData() { return brickData; }
     public int getXPosition() { return xPosition; } 
     public int getYPosition() { return yPosition; }
-    
 }

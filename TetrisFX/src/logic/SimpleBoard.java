@@ -42,12 +42,33 @@ public class SimpleBoard
     
     public ViewData getViewData() { return new ViewData(getCurrentShape(), currentOffSet.x, currentOffSet.y); }
     
-    public void moveBrickDown()
+    public boolean moveBrickDown()
     {
         Point p = new Point(currentOffSet);
         p.translate(0, 1);
         currentOffSet = p;
         boolean conflict = MatrixOperations.intersects(currentGameMatrix, getCurrentShape(), p.x, p.y);
-        //agregar aqui
+        if(conflict){
+            return false;
+        }else {
+            currentOffSet = p;
+            return true;
+        }
+    }
+
+    public boolean moveBrickLeft() {
+        Point p = new Point(currentOffSet);
+        p.translate(-1,0);
+        currentOffSet = p;
+        boolean conflict = MatrixOperations.intersects(currentGameMatrix, getCurrentShape(), p.x, p.y);
+        if(conflict){
+            return false;
+        }else {
+            currentOffSet = p;
+            return true;
+        }
+    }
+
+    public void mergeBrickToBackground() {
     }
 }

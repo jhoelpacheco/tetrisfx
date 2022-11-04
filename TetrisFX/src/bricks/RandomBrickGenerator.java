@@ -26,8 +26,10 @@ public class RandomBrickGenerator
         nextBricks.add(brickList.get(ThreadLocalRandom.current().nextInt(brickList.size())));
     }
     
-    public Brick getBrick()
-    {
+    public Brick getBrick() {
+        if(nextBricks.size() <= 1){
+            nextBricks.add(brickList.get(ThreadLocalRandom.current().nextInt(brickList.size())));
+        }
         return nextBricks.poll();
     }
 }
