@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:controller="tetrisfx.GuiController" xmlns:fx="http://javafx.com/fxml/1" prefHeight="472" prefWidth="380" xmlns="http://javafx.com/javafx/18">
+<Pane fx:controller="tetrisfx.GuiController" xmlns:fx="http://javafx.com/fxml/1" prefHeight="450" prefWidth="380" xmlns="http://javafx.com/javafx/18">
     <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
     <BorderPane styleClass="gameBoard">
         <center>
             <GridPane fx:id="gamePanel"/>
-            <!--vgap="1" hgap="1"-->
         </center>
     </BorderPane>
     <VBox alignment="CENTER" layoutX="243" layoutY="20" styleClass="vbox">
