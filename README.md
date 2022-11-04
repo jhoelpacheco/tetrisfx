@@ -38,7 +38,9 @@ Per aconseguir-ho hem utilitzat:
 En aquest sprint hem inclòs les següents funcionalitats:
 
 -Moure la peça amb les tecles del cursor, dreta o esquerra.
+
 -Que la linea de fitxes es borri al completar-se de peces.
+
 -Al completar-se la fila fins al cap damunt del taulell.
 
 ![Image text](https://github.com/jhoelpacheco/tetrisfx/blob/main/images/Screenshot_117.png?raw=true)
