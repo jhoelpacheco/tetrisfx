@@ -21,7 +21,7 @@
 }
 
 .root {
-    -fx-background-image: url("background_image.png");
+    -fx-background-image: url("blueBackgroundImage.jpg");
     -fx-font-family: 'TW Cen MT', sans-serif;  
 }
 
