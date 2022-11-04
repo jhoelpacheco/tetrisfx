@@ -32,3 +32,9 @@ Per aconseguir-ho hem utilitzat:
 
 
 ![Image text](https://github.com/FahadToqir/TetrisNew/blob/master/images/tetrisMain2.png)
+
+**Sprint 3**
+
+En aquest sprint mouren la peça
+
+![Image text](images/Screenshot_117.png)
