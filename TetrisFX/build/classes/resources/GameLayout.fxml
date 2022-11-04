@@ -32,7 +32,7 @@
     <VBox alignment="CENTER" layoutX="240" layoutY="350" styleClass="vbox">
         <Text styleClass="helpInfo" wrappingWidth="150">
             <![CDATA[
-                Use (Up, Down, Left, Right) for movement and (Z, X) for rotation. 
+                Use (Up, Down, Left, Right) for movement and rotation. 
             ]]>
         </Text>
         <Text styleClass="helpInfo" wrappingWidth="150">

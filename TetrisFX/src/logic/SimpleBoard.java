@@ -48,5 +48,6 @@ public class SimpleBoard
         p.translate(0, 1);
         currentOffSet = p;
         boolean conflict = MatrixOperations.intersects(currentGameMatrix, getCurrentShape(), p.x, p.y);
+        //agregar aqui
     }
 }
