@@ -1,7 +1,7 @@
 
 @font-face{
-    font-family: 'TW Cen MT';
-    /*src: url('Tetris.ttf')*/;
+    font-family: 'tetris';
+    src: url('Tetris.ttf');
 }
 
 .dark-blue {
@@ -38,7 +38,7 @@
 }
  
 .nextBrickLabel {
-    -fx-font-family: 'TW Cen MT', sans-serif; 
+    -fx-font-family: 'tetris', sans-serif; 
     -fx-padding: 20px 0 0 0;
     -fx-font-size: 16px;
     -fx-text-fill: yellow;
@@ -53,7 +53,7 @@
     -fx-background-insets: 0, 1, 4, 5, 6;
     -fx-background-radius: 9, 8, 5, 4, 3;
     -fx-padding: 8;
-    -fx-font-family: 'TW Cen MT', sans-serif; 
+    -fx-font-family: 'tetris', sans-serif; 
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
@@ -69,10 +69,11 @@
 }
  
 .helpInfo {
+    -fx-font-family: 'tetris';
     -fx-fill: white;
     -fx-alignment: center-left;
     -fx-text-alignment: left;
-    -fx-font-size: 10px;
+    -fx-font-size: 8px;
 }
  
 .bonusStyle {
@@ -81,20 +82,20 @@
 }
  
 .gameOverStyle {
-    -fx-font-family: 'TW Cen MT', sans-serif; 
+    -fx-font-family: 'tetris', sans-serif; 
     -fx-font-size: 48;
     -fx-background-color: red;
 }
  
 .scoreClass{
-    -fx-font-family: 'TW Cen MT', sans-serif;                                            
+    -fx-font-family: 'tetris', sans-serif;                                            
     -fx-font-size: 24;
     -fx-fill: white;
     -fx-text-fill: white;
 }
 
 .scoreClassText{
-    -fx-font-family: 'TW Cen MT', sans-serif;  
+    -fx-font-family: 'Ttetris', sans-serif;  
     -fx-font-style: italic;
     -fx-font-size: 12;
     -fx-fill: white;

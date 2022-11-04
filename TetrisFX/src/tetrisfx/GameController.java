@@ -5,8 +5,7 @@ import logic.ViewData;
 import logic.SimpleBoard;
 import logic.InputEventListener;
 
-public class GameController implements InputEventListener
-{
+public class GameController implements InputEventListener{
     private final GuiController viewController;
     private SimpleBoard board = new SimpleBoard(22, 10);
     

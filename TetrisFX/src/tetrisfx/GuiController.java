@@ -1,7 +1,7 @@
 package tetrisfx;
 
-//import java.net.URL;
-//import java.util.ResourceBundle;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.fxml.FXML;
@@ -10,15 +10,15 @@ import logic.ViewData;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 import javafx.beans.property.IntegerProperty;
-//import javafx.scene.effect.Reflection;
-import logic.InputEventListener;
+import javafx.fxml.Initializable;
+import javafx.scene.effect.Reflection;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import logic.InputEventListener;
 
 //SETS UP THE DIMENSIONS OF THE GRID BY DECLARING RECTANGLES [10x22]
-public class GuiController {
+public class GuiController implements Initializable{
     
     //cells size [20px]
     private static final int BRICK_SIZE = 20;
@@ -116,8 +116,7 @@ public class GuiController {
     
     public void setEventLister(InputEventListener eventLister) { this.eventLister = eventLister; }
     
-    //@Override
-    /*
+    @Override
     public void initialize(URL location, ResourceBundle resources)
     {
         Reflection reflection = new Reflection();
@@ -125,5 +124,5 @@ public class GuiController {
         reflection.setTopOpacity(0.9);
         reflection.setTopOffset(-12);
         scoreValue.setEffect(reflection);
-    }*/
+    }
 }
