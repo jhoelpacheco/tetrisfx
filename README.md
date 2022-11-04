@@ -1,45 +1,53 @@
-# T E T R I S
-2º GRUP: Victor Falcon(DAW2), Jhoel Pacheco (DAM2)
+# TetrisNew
+**Sprint 1**
 
-## DESCRIPTION
+ Hem creat l'entorn on es desenvoluparà el nostre Tetris.
 
-In Tetris, players complete lines by moving differently shaped pieces (tetrominoes), which descend onto the playing field. The completed lines disappear and grant the player points, and the player can proceed to fill the vacated spaces. The game ends when the uncleared lines reach the top of the playing field.
+Això serà el taulell de joc, on cauran les peces i  s'apilarà durant la partida.
 
-### Image Sprint 1
+-L'usuari que esta jugant.
 
-![Image text](https://github.com/vfalcon6/tetris/blob/main/img.png)
+-Les lineas que porta esborrades.
 
-### Image Sprint 2
+-La puntuació que porta l'usuari.
 
-![](https://github.com/vfalcon6/tetris/blob/main/tetrisS2.gif)
+-El nivell que portem.
 
-## TECNOLOGIES
+Tot això està construït amb l'opció del SceneBuilder que ens proporciona el JAVAFX, que consisteix en modificar un fitxer FXML per poder mostrar en pantalla l'escenari desitjat.
 
-    JavaFX, Scene Builder, Netbeans
 
-## OBJECTIVES
-    -  (1º SPRINT) 
-            Game screen
-            Static stage
-            Buttons
-            Score
-            User
-            
-    -  (2º SPRINT)
-            Create brick
-            Add brick to panel game
-            Add drop motion to brick
-            Add limit falling bricks
-    
-## ORGANIZATION 
+![Image text](https://github.com/FahadToqir/TetrisNew/blob/master/images/tetrisMain1.png)
 
+
+**Sprint 2**
+
+
+Hem desenvolupat el sistema pel qual les peces cauran fins el final de la pantalla.
+
+Per aconseguir-ho hem utilitzat:
+
+-_Una_ _forma_ _geomètrica_ _que_ _faci_ _de_ _peça_
+
+-_un_ _timer_ _per_ _controlar_ _la_ _caiguda_
+
+
+![Image text](https://github.com/jhoelpacheco/tetrisfx/blob/main/images/tetrisMain2.png?raw=true)
+
+**Sprint 3**
+
+En aquest sprint hem inclòs les següents funcionalitats:
+
+-Moure la peça amb les tecles del cursor, dreta o esquerra.
+
+-Que la linea de fitxes es borri al completar-se de peces.
+
+-Al completar-se la fila fins al cap damunt del taulell acabi la partida amb el missatge "GAME OVER".
+
+![Image text](https://github.com/jhoelpacheco/tetrisfx/blob/main/images/Screenshot_117.png?raw=true)
+
+
+ORGANIZATION
 Link => https://trello.com/b/KTpdG1Oo/tetris
 
-
-## ASSIGNED TEACHERS
-Eduard Lara | eduard.lara@iesjoandaustria.org
-Jose Luís Castillo | joseluis.castillo@iesjoandaustria.org
-Moisès Gómez | moises.gomez@iesjoandaustria.org
-Oriol Jauma | oriol.jauma@iesjoandaustria.org
-Jordi Quesada | jordi.quesada@iesjoandaustria.org
-Jose Luis Hernandez | juanluis.hernandez@iesjoandaustria.org
+ASSIGNED TEACHERS
+Eduard Lara | eduard.lara@iesjoandaustria.org Jose Luís Castillo | joseluis.castillo@iesjoandaustria.org Moisès Gómez | moises.gomez@iesjoandaustria.org Oriol Jauma | oriol.jauma@iesjoandaustria.org Jordi Quesada | jordi.quesada@iesjoandaustria.org Jose Luis Hernandez | juanluis.hernandez@iesjoandaustria.org
