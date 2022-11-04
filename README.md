@@ -37,4 +37,4 @@ Per aconseguir-ho hem utilitzat:
 
 En aquest sprint mouren la peça
 
-![Image text](images/Screenshot_117.png)
+![Image text](https://github.com/jhoelpacheco/tetrisfx/blob/main/images/tetrisMain2.png?raw=true)
