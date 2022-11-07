@@ -1,5 +1,6 @@
 package tetrisfx;
 
+import Events.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.shape.Rectangle;
@@ -10,8 +11,12 @@ import logic.ViewData;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
 import javafx.beans.property.IntegerProperty;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.effect.Reflection;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -26,7 +31,7 @@ public class GuiController implements Initializable{
     Timeline timeLine;
     private InputEventListener eventLister;
     private Rectangle[][] displayMatrix;
-    
+    private Rectangle[][] rectangles;
     @FXML
     private GridPane gamePanel;
     
@@ -47,13 +52,13 @@ public class GuiController implements Initializable{
             }
         }
 
-        //rectangles = new Rectangle[viewData.getBrickData().length][viewData.getBrickData()[0].length];
+        rectangles = new Rectangle[viewData.getBrickData().length][viewData.getBrickData()[0].length];
 
         for(int i = 0; i < viewData.getBrickData().length; i++){
             for(int j = 0; j < viewData.getBrickData()[i].length; j++){
                     Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
                     rectangle.setFill(getFillColor(viewData.getBrickData()[i][j]));
-                    
+                    rectangles[i][j] = rectangle;
                     brickPanel.add(rectangle, j, i);
             }
         }
@@ -62,8 +67,9 @@ public class GuiController implements Initializable{
         brickPanel.setLayoutY(
                 -42 + gamePanel.getLayoutY() + (viewData.getYPosition() * BRICK_SIZE) + viewData.getYPosition());
         
-        timeLine = new Timeline(new KeyFrame(Duration.millis(200), ae -> moveDown()));
-        timeLine.setCycleCount(21);
+        timeLine = new Timeline(new KeyFrame(Duration.millis(200),
+                ae -> moveDown(new MoveEvent(EventType.DOWN, EventSource.THREAD))));
+        timeLine.setCycleCount(Timeline.INDEFINITE);
         timeLine.play();
     }
     
@@ -88,8 +94,8 @@ public class GuiController implements Initializable{
         scoreValue.textProperty().bind(integerProperty.asString());
     }
     
-    private void moveDown(){
-        ViewData viewData = eventLister.onDownEvent();
+    private void moveDown(MoveEvent event){
+        ViewData viewData = eventLister.onDownEvent(event);
         refreshBrick(viewData);
     }
     
@@ -111,6 +117,12 @@ public class GuiController implements Initializable{
         brickPanel.setLayoutX(gamePanel.getLayoutX() + viewData.getXPosition() * BRICK_SIZE);
         brickPanel.setLayoutY(
                 -42 + gamePanel.getLayoutY() + (viewData.getYPosition() * BRICK_SIZE) + viewData.getYPosition());
+        
+        for(int i=0 ; i< viewData.getBrickData().length; i++){
+            for(int j=0 ;j<viewData.getBrickData()[i].length ;j++ ){
+                setRectangleData(viewData.getBrickData()[i][j], rectangles[i][j]);
+            }
+        }
     }
     
     public void setEventLister(InputEventListener eventLister) { 
@@ -119,6 +131,18 @@ public class GuiController implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        gamePanel.setFocusTraversable(true);
+        gamePanel.requestFocus();
+        gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>(){
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode() == KeyCode.D || event.getCode() == KeyCode.DOWN){
+                    moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
+                    event.consume();
+                }
+            }
+        });
+        
         Reflection reflection = new Reflection();
         reflection.setFraction(0.8);
         reflection.setTopOpacity(0.9);

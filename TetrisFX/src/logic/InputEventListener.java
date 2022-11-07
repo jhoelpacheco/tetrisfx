@@ -1,6 +1,8 @@
 package logic;
 
+import Events.MoveEvent;
+
 public interface InputEventListener 
 {
-    ViewData onDownEvent();
+    ViewData onDownEvent(MoveEvent event);
 }

@@ -67,11 +67,11 @@ public class SimpleBoard
                 getCurrentShape(),
                 currentOffSet.x,
                 currentOffSet.y);
-        for(int i=0 ; i<currentGameMatrix.length; i++){
+        /*for(int i=0 ; i<currentGameMatrix.length; i++){
             System.out.println();
             for(int j=0; j<currentGameMatrix[i].length ;j++ ){
                 System.out.print(currentGameMatrix[i][j]);
             }
-        }
+        }*/
     }
 }
