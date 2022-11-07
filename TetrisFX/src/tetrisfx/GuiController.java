@@ -1,7 +1,10 @@
 package tetrisfx;
 
 import java.net.URL;
+import java.security.PrivateKey;
 import java.util.ResourceBundle;
+
+import com.sun.scenario.effect.impl.prism.PrImage;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.fxml.FXML;
@@ -28,13 +31,19 @@ public class GuiController implements Initializable{
     
     @FXML
     private GridPane gamePanel;
+
+    @FXML
+    private GridPane nextBrick;
     
     @FXML
     private GridPane brickPanel;
     
     @FXML
     private Text scoreValue;
-    
+
+    /*@FXML
+    private GameOverPanel gameOverPanel;
+    */
     public void initGameView(int[][] boardMatrix, ViewData viewData)
     {
         for(int i = 0; i< boardMatrix.length; i++)
@@ -63,10 +72,24 @@ public class GuiController implements Initializable{
         
         brickPanel.setLayoutX(gamePanel.getLayoutX() + viewData.getXPosition() * BRICK_SIZE);
         brickPanel.setLayoutY(-42 + gamePanel.getLayoutY() + viewData.getYPosition() * BRICK_SIZE);
-        
+
+        generatePreviewPanel(viewData.getNextBrickData());
         timeLine = new Timeline(new KeyFrame(Duration.millis(200), ae -> moveDown()));
         timeLine.setCycleCount(21);
         timeLine.play();
+    }
+
+    private void generatePreviewPanel(int[][] nextBrickData) {
+        nextBrick.getChildren().clear();
+        for (int i = 0; i < nextBrickData.length(); i++) {
+            for (int j = 0; j < nextBrickData[i].length(); i++){
+                Rectangle rectangle = new Rectangle(BRICK_SIZE, BRICK_SIZE);
+                setRectangleData(nextBrickData[i][j], rectangle);
+                if (nextBrickData[i][j] != 0){
+                    nextBrick.add(rectangle, j, i);
+                }
+            }
+        }
     }
     
     public Paint getFillColor(int i)
@@ -113,7 +136,8 @@ public class GuiController implements Initializable{
         brickPanel.setLayoutX(gamePanel.getLayoutX() + viewData.getXPosition() * BRICK_SIZE);
         brickPanel.setLayoutY(-42 + gamePanel.getLayoutY() + viewData.getYPosition() * BRICK_SIZE);
     }
-    
+
+    generatePreviewPanel(viewData.getNextBrickData());
     public void setEventLister(InputEventListener eventLister) { this.eventLister = eventLister; }
     
     @Override
@@ -124,5 +148,12 @@ public class GuiController implements Initializable{
         reflection.setTopOpacity(0.9);
         reflection.setTopOffset(-12);
         scoreValue.setEffect(reflection);
+    }
+
+    public void gameOver() {
+        timeLine.stop();
+        gameOverPanel.setVisible(true);
+        isGameOver.setValue(Boolean.TRUE);
+        System.out.println("Fi del joc");
     }
 }
