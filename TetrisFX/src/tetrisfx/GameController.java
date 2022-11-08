@@ -35,5 +35,12 @@ public class GameController implements InputEventListener{
         viewController.refreshGameBackground(board.getBoardMatrix());
         return board.getViewData();
     }
+
+    public ViewData onLeftEvent() {
+        board.moveBrickLeft();
+
+        return board.getViewData();
+
+    }
     
 }

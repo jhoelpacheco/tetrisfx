@@ -140,6 +140,10 @@ public class GuiController implements Initializable{
                     moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
                     event.consume();
                 }
+                if(event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.A){
+                    refreshBrick(eventLister.onLeftEvent());
+                    event.consume();
+                }
             }
         });
         
