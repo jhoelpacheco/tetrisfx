@@ -34,13 +34,17 @@ public class SimpleBoard
         setBrick(currentBrick);
         currentOffSet = new Point(3, 0);
         return true;
+
+        return MatrixOperations.intersects(currentGameMatrix,
+                getCurrentShape(), x, y);
     }
     
     public int [][] getBoardMatrix() { return currentGameMatrix; }
     
     public Score getScore() { return score; }
     
-    public ViewData getViewData() { return new ViewData(getCurrentShape(), currentOffSet.x, currentOffSet.y); }
+    public ViewData getViewData() { return new ViewData(getCurrentShape(),
+            currentOffSet.x, currentOffSet.y, brickGenerator.getNextBrick.getBrickMatrix.get(0)); }
     
     public boolean moveBrickDown()
     {

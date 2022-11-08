@@ -4,9 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
+<?import gui.GameOverPanel?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.Group?>
+<?import GameOverPanel?>
 <Pane fx:controller="tetrisfx.GuiController" xmlns:fx="http://javafx.com/fxml/1" prefHeight="450" prefWidth="380" xmlns="http://javafx.com/javafx/18">
     <GridPane fx:id="brickPanel" vgap="1" hgap="1"/>
     <BorderPane styleClass="gameBoard">
@@ -25,7 +28,9 @@
         <VBox alignment="CENTER">
             <Label text="Next Brick" styleClass="nextBrickLabel"/>
             <BorderPane styleClass="nextBrick" prefWidth="100" prefHeight="80" maxWidth="100">
-                
+              <center>
+                  <GridPane fx:id ="nextBrick" alignment="center" hgap="1" vgap="1"/>
+              </center>
             </BorderPane>
         </VBox>
     </VBox>
@@ -46,6 +51,10 @@
             ]]>
         </Text>
     </VBox>
+
+    <Group fx:id ="groupNotification" layoutX="14" layoutY="203">
+        <GameOverPanel fx:id="gameOverPanel"/>
+    </Group>
     
     <stylesheets>
         <URL value="@window_slyte.css" />
