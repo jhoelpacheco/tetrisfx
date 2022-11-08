@@ -89,4 +89,18 @@ public class SimpleBoard
         }
 
     }
+
+    public boolean moveBrickRight() {
+        Point p = new Point(currentOffSet);
+        p.translate(1,0);
+
+        currentOffSet = p;
+        boolean conflict = MatrixOperations.intersects(currentGameMatrix, getCurrentShape(), p.x, p.y);
+        if (conflict) {
+            return false;
+        } else {
+            currentOffSet = p;
+            return true;
+        }
+    }
 }

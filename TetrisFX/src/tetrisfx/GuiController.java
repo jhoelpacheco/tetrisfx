@@ -144,6 +144,10 @@ public class GuiController implements Initializable{
                     refreshBrick(eventLister.onLeftEvent());
                     event.consume();
                 }
+                if(event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.D){
+                    refreshBrick(eventLister.onRightEvent());
+                    event.consume();
+                }
             }
         });
         

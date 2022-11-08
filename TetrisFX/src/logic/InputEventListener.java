@@ -7,4 +7,6 @@ public interface InputEventListener
     ViewData onDownEvent(MoveEvent event);
 
     ViewData onLeftEvent();
+
+    ViewData onRightEvent();
 }
