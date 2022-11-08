@@ -6,13 +6,11 @@ import java.util.Deque;
 import java.util.ArrayDeque;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomBrickGenerator 
-{
+public class RandomBrickGenerator{
     private final List<Brick> brickList;
     private final Deque<Brick> nextBricks = new ArrayDeque<>();
     
-    public RandomBrickGenerator()
-    {
+    public RandomBrickGenerator(){
         brickList = new ArrayList<>();
         brickList.add(new IBrick());
         brickList.add(new SBrick());
@@ -26,10 +24,11 @@ public class RandomBrickGenerator
         nextBricks.add(brickList.get(ThreadLocalRandom.current().nextInt(brickList.size())));
     }
     
-    public Brick getBrick() {
+    public Brick getBrick(){
         if(nextBricks.size() <= 1){
             nextBricks.add(brickList.get(ThreadLocalRandom.current().nextInt(brickList.size())));
         }
+        
         return nextBricks.poll();
     }
 }
