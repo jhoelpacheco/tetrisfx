@@ -2,9 +2,7 @@ package tetrisfx;
 
 import Events.EventSource;
 import Events.MoveEvent;
-import logic.ViewData;
-import logic.SimpleBoard;
-import logic.InputEventListener;
+import logic.*;
 
 public class GameController implements InputEventListener{
     private final GuiController viewController;
@@ -20,11 +18,13 @@ public class GameController implements InputEventListener{
     }
     
     @Override
-    public ViewData onDownEvent(MoveEvent event){
+    public DownData onDownEvent(MoveEvent event){
         boolean canMove = board.moveBrickDown();
-        
+        ClearRow clearRow = null;
         if(!canMove){
             board.mergeBrickToBackground();
+            clearRow = board.clearRows();
+            System.out.println(clearRow.getLinesRemoved());
             board.createNewBrick();
         }else{
             if(event.getEventSource() == EventSource.USER){
@@ -33,7 +33,7 @@ public class GameController implements InputEventListener{
         }
         
         viewController.refreshGameBackground(board.getBoardMatrix());
-        return board.getViewData();
+        return new DownData(clearRow, board.getViewData());
     }
 
     public ViewData onLeftEvent() {
@@ -46,8 +46,16 @@ public class GameController implements InputEventListener{
     @Override
     public ViewData onRightEvent() {
         board.moveBrickRight();
+
         return board.getViewData();
 
+    }
+
+    @Override
+    public ViewData onRotateEvent() {
+        board.rotateBrickLeft();
+
+        return board.getViewData();
     }
 
 }
