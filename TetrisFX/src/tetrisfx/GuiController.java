@@ -7,6 +7,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
+import logic.DownData;
 import logic.ViewData;
 import javafx.animation.Timeline;
 import javafx.animation.KeyFrame;
@@ -95,8 +96,8 @@ public class GuiController implements Initializable{
     }
     
     private void moveDown(MoveEvent event){
-        ViewData viewData = eventLister.onDownEvent(event);
-        refreshBrick(viewData);
+        DownData viewData = eventLister.onDownEvent(event);
+        refreshBrick(viewData.getViewData());
     }
     
     public void refreshGameBackground(int[][] board) {
@@ -136,7 +137,11 @@ public class GuiController implements Initializable{
         gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.D || event.getCode() == KeyCode.DOWN){
+                if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.W){
+                    refreshBrick(eventLister.onRotateEvent());
+                    event.consume();
+                }
+                if(event.getCode() == KeyCode.DOWN || event.getCode() == KeyCode.S){
                     moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
                     event.consume();
                 }
