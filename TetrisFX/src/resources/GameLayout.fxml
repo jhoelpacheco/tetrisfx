@@ -21,7 +21,7 @@
             <Text styleClass="scoreClassText" text="Lines" />
         </VBox>
         <Button styleClass="ipad-dark-grey" prefHeight="30.0" prefWidth="120.0" text="NEW GAME" />
-        <ToggleButton styleClass="ipad-dark-grey" prefHeight="30.0" prefWidth="120.0" text="PAUSE" />
+        <ToggleButton styleClass="ipad-dark-grey" prefHeight="30.0" prefWidth="120.0" text="PAUSE" fx:id="pauseButton" />
         <VBox alignment="CENTER">
             <Label text="Next Brick" styleClass="nextBrickLabel"/>
             <BorderPane styleClass="nextBrick" prefWidth="100" prefHeight="80" maxWidth="100">

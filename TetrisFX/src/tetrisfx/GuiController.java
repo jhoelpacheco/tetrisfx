@@ -3,6 +3,12 @@ package tetrisfx;
 import Events.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
 import javafx.fxml.FXML;
@@ -33,6 +39,12 @@ public class GuiController implements Initializable{
     private InputEventListener eventLister;
     private Rectangle[][] displayMatrix;
     private Rectangle[][] rectangles;
+
+    private BooleanProperty paused = new SimpleBooleanProperty();
+
+    @FXML
+    private ToggleButton pauseButton;
+
     @FXML
     private GridPane gamePanel;
     
@@ -137,21 +149,41 @@ public class GuiController implements Initializable{
         gamePanel.setOnKeyPressed(new EventHandler<KeyEvent>(){
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.W){
-                    refreshBrick(eventLister.onRotateEvent());
-                    event.consume();
+                if(paused.getValue() == Boolean.FALSE){
+                    if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.W){
+                        refreshBrick(eventLister.onRotateEvent());
+                        event.consume();
+                    }
+                    if(event.getCode() == KeyCode.DOWN || event.getCode() == KeyCode.S){
+                        moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
+                        event.consume();
+                    }
+                    if(event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.A){
+                        refreshBrick(eventLister.onLeftEvent());
+                        event.consume();
+                    }
+                    if(event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.D){
+                        refreshBrick(eventLister.onRightEvent());
+                        event.consume();
+                    }
                 }
-                if(event.getCode() == KeyCode.DOWN || event.getCode() == KeyCode.S){
-                    moveDown(new MoveEvent(EventType.DOWN, EventSource.USER));
-                    event.consume();
+
+                if(event.getCode() == KeyCode.P) {
+                    pauseButton.selectedProperty().setValue(!pauseButton.selectedProperty().getValue());
                 }
-                if(event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.A){
-                    refreshBrick(eventLister.onLeftEvent());
-                    event.consume();
-                }
-                if(event.getCode() == KeyCode.RIGHT || event.getCode() == KeyCode.D){
-                    refreshBrick(eventLister.onRightEvent());
-                    event.consume();
+            }
+        });
+
+        pauseButton.selectedProperty().bindBidirectional(paused);
+        pauseButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(newValue){
+                    timeLine.pause();
+                    pauseButton.setText("Resume");
+                }else{
+                    timeLine.play();
+                    pauseButton.setText("Pause");
                 }
             }
         });
