@@ -1,6 +1,7 @@
 package tetrisfx;
 
-
+import Events.EventSource;
+import Events.MoveEvent;
 import logic.ViewData;
 import logic.SimpleBoard;
 import logic.InputEventListener;
@@ -19,27 +20,34 @@ public class GameController implements InputEventListener{
     }
     
     @Override
-    public ViewData onDownEvent(MoveEvent event) {
-        boolean  canMove = board.moveBrickDown();
-        ClearRow clearRow = null;
-        if (!canMove) {
+    public ViewData onDownEvent(MoveEvent event){
+        boolean canMove = board.moveBrickDown();
+        
+        if(!canMove){
             board.mergeBrickToBackground();
-            clearRow = board.clearRows();
-            if (clearRow.getLinesRemoved() > 0) {
-                board.getScore().add(clearRow.getScoreBonus());
-            }
-
-            if (board.createNewBrick()) {
-                viewController.gameOver();
-            }
-            else {
-                if(event.getEventSource() == EventSource.USER){
-                    board.getScore().add(1);
-                }
+            board.createNewBrick();
+        }else{
+            if(event.getEventSource() == EventSource.USER){
+                board.getScore().add(1);
             }
         }
-        board.moveBrickDown();
+        
+        viewController.refreshGameBackground(board.getBoardMatrix());
         return board.getViewData();
     }
-    
+
+    public ViewData onLeftEvent() {
+        board.moveBrickLeft();
+
+        return board.getViewData();
+
+    }
+
+    @Override
+    public ViewData onRightEvent() {
+        board.moveBrickRight();
+        return board.getViewData();
+
+    }
+
 }
