@@ -46,7 +46,8 @@ public class SimpleBoard
     public ViewData getViewData(){ 
         return new ViewData(getCurrentShape(),
                             currentOffSet.x,
-                            currentOffSet.y);
+                            currentOffSet.y,
+                            );
     }
     
     public boolean moveBrickDown(){

@@ -24,8 +24,8 @@ public class RandomBrickGenerator{
         nextBricks.add(brickList.get(ThreadLocalRandom.current().nextInt(brickList.size())));
 
     }
-    public Brick nextBrick {
-        return nextBricks.peek()
+    public Brick nextBrick() {
+        return nextBricks.peek();
 
 }
     
