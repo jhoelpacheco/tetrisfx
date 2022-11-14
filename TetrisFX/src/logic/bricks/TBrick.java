@@ -1,43 +1,42 @@
-package bricks;
+package logic.bricks;
 
-import bricks.Brick;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class LBrick implements Brick
-{
+public class TBrick implements Brick{
     private final List<int[][]> brickMatrix = new ArrayList<>();
-    public LBrick()
+    public TBrick()
     {
         brickMatrix.add(new int[][]
         {
             {0, 0, 0, 0},
-            {0, 4, 4, 4},
-            {0, 4, 0, 0},
+            {6, 6, 6, 0},
+            {0, 6, 0, 0},
             {0, 0, 0, 0}
         });
         
         brickMatrix.add(new int[][]
         {
-            {0, 0, 0, 0},
-            {0, 4, 4, 0},
-            {0, 0, 4, 0},
-            {0, 0, 4, 0}
-        });
-        
-        brickMatrix.add(new int[][]
-        {
-            {0, 0, 0, 0},
-            {0, 0, 4, 0},
-            {4, 4, 4, 0},
+            {0, 6, 0, 0},
+            {0, 6, 6, 0},
+            {0, 6, 0, 0},
             {0, 0, 0, 0}
         });
         
         brickMatrix.add(new int[][]
         {
-            {0, 4, 0, 0},
-            {0, 4, 0, 0},
-            {0, 4, 4, 0},
+            {0, 6, 0, 0},
+            {6, 6, 6, 0},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0}
+        });
+        
+        brickMatrix.add(new int[][]
+        {
+            {0, 6, 0, 0},
+            {6, 6, 0, 0},
+            {0, 6, 0, 0},
             {0, 0, 0, 0}
         });
     }

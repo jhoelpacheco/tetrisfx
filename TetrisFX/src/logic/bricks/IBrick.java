@@ -1,28 +1,27 @@
-package bricks;
+package logic.bricks;
 
-import bricks.Brick;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZBrick implements Brick
+public class IBrick implements Brick
 {
     private final List<int[][]> brickMatrix = new ArrayList<>();
-    public ZBrick()
+    public IBrick()
     {
         brickMatrix.add(new int[][]
         {
             {0, 0, 0, 0},
-            {7, 7, 0, 0},
-            {0, 7, 7, 0},
+            {2, 2, 2, 2},
+            {0, 0, 0, 0},
             {0, 0, 0, 0}
         });
         
         brickMatrix.add(new int[][]
         {
-            {0, 7, 0, 0},
-            {7, 7, 0, 0},
-            {7, 0, 0, 0},
-            {0, 0, 0, 0}
+            {0, 2, 0, 0},
+            {0, 2, 0, 0},
+            {0, 2, 0, 0},
+            {0, 2, 0, 0}
         });
     }
     

@@ -1,14 +1,19 @@
 package tetrisfx;
 
-import Events.EventSource;
-import Events.MoveEvent;
-import logic.ViewData;
+import logic.ClearRow;
+import logic.DownData;
 import logic.SimpleBoard;
-import logic.InputEventListener;
+import logic.ViewData;
+import logic.events.EventSource;
+import logic.events.InputEventListener;
+import logic.events.MoveEvent;
+
 
 public class GameController implements InputEventListener{
-    private final GuiController viewController;
+    
     private SimpleBoard board = new SimpleBoard(22, 10);
+    private final GuiController viewController;
+    
     
     public GameController(GuiController c){
         
@@ -18,13 +23,22 @@ public class GameController implements InputEventListener{
         this.viewController.initGameView(board.getBoardMatrix(), board.getViewData());
         this.viewController.bindScore(board.getScore().scoreProperty());
     }
-    
+
     @Override
-    public ViewData onDownEvent(MoveEvent event){
-        boolean canMove = board.moveBrickDown();
+    public DownData onDownEvent(MoveEvent event) {
+        boolean canMove = board.moveBrickdown();
+        ClearRow clearRow = null;
         
         if(!canMove){
             board.mergeBrickToBackground();
+            clearRow = board.clearRows();
+            if(clearRow.getLinesRemoved() > 0){
+                board.getScore().add(clearRow.getScoreBonus());
+            }
+            if(board.createNewBrick()){
+                viewController.gameOver();
+            }
+            
             board.createNewBrick();
         }else{
             if(event.getEventSource() == EventSource.USER){
@@ -33,7 +47,28 @@ public class GameController implements InputEventListener{
         }
         
         viewController.refreshGameBackground(board.getBoardMatrix());
+        
+        return new DownData(clearRow, board.getViewData());
+    }
+
+    @Override
+    public ViewData onLeftEvent() {
+        board.moveBrickLeft();
+        
         return board.getViewData();
     }
-    
+
+    @Override
+    public ViewData onRightEvent() {
+        board.moveBrickRight();
+        
+        return board.getViewData();
+    }
+
+    @Override
+    public ViewData onRotateEvent() {
+        board.rotateBrickLeft();
+        
+        return board.getViewData();
+    }
 }

@@ -1,10 +1,10 @@
 
 @font-face{
-    font-family: 'tetris';
+    font-family: 'Tetris';
     src: url('Tetris.ttf');
 }
 
-.dark-blue {
+dark-blue {
     -fx-background-color: 
         #090a0c,
         linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
@@ -14,15 +14,15 @@
     -fx-background-insets: 0,1,2,0;
     -fx-text-fill: white;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-    -fx-font-family: "TW Cen MT";
+    -fx-font-family: "Arial";
     -fx-text-fill: linear-gradient(white, #d0d0d0);
     -fx-font-size: 12px;
     -fx-padding: 10 20 10 20;
 }
 
 .root {
-    -fx-background-image: url("background_image.png");
-    -fx-font-family: 'TW Cen MT', sans-serif;  
+    -fx-background-image: url("blueBackgroundImage.jpg");
+    -fx-font-family: 'Tetris', sans-serif;  
 }
 
 .nextBrick {
@@ -38,7 +38,7 @@
 }
  
 .nextBrickLabel {
-    -fx-font-family: 'tetris', sans-serif; 
+    -fx-font-family: 'Tetris', sans-serif; 
     -fx-padding: 20px 0 0 0;
     -fx-font-size: 16px;
     -fx-text-fill: yellow;
@@ -53,7 +53,7 @@
     -fx-background-insets: 0, 1, 4, 5, 6;
     -fx-background-radius: 9, 8, 5, 4, 3;
     -fx-padding: 8;
-    -fx-font-family: 'tetris', sans-serif; 
+    -fx-font-family: 'Tetris', sans-serif; 
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
@@ -69,7 +69,6 @@
 }
  
 .helpInfo {
-    -fx-font-family: 'tetris';
     -fx-fill: white;
     -fx-alignment: center-left;
     -fx-text-alignment: left;
@@ -82,22 +81,14 @@
 }
  
 .gameOverStyle {
-    -fx-font-family: 'tetris', sans-serif; 
+    -fx-font-family: 'Tetris', sans-serif; 
     -fx-font-size: 48;
     -fx-background-color: red;
 }
  
 .scoreClass{
-    -fx-font-family: 'tetris', sans-serif;                                            
+    -fx-font-family: 'Tetris', sans-serif;                                            
     -fx-font-size: 24;
-    -fx-fill: white;
-    -fx-text-fill: white;
-}
-
-.scoreClassText{
-    -fx-font-family: 'Ttetris', sans-serif;  
-    -fx-font-style: italic;
-    -fx-font-size: 12;
     -fx-fill: white;
     -fx-text-fill: white;
 }

@@ -1,8 +1,7 @@
-package bricks;
+package logic.bricks;
 
 import java.util.List;
 
-public interface Brick 
-{
+public interface Brick{
     List<int[][]> getBrickMatrix();
 }

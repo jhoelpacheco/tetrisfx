@@ -1,11 +1,9 @@
-package bricks;
+package logic.bricks;
 
-import bricks.Brick;
 import java.util.List;
 import java.util.ArrayList;
 
-public class OBrick implements Brick
-{
+public class OBrick implements Brick{
     private final List<int[][]> brickMatrix = new ArrayList<>();
     public OBrick()
     {
