@@ -11,8 +11,9 @@
 <?import javafx.scene.text.*?>
 <?import tetrisfx.GameOverPanel?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.ListView?>
 
-<Pane prefHeight="430" prefWidth="380" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="tetrisfx.GuiController">
+<Pane prefHeight="430" prefWidth="380" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="tetrisfx.GuiController">
     <GridPane fx:id="brickPanel" hgap="1" vgap="1" />
     <BorderPane styleClass="gameBoard" >
         <center>
@@ -20,7 +21,7 @@
         </center>  
     </BorderPane>
     
-    <VBox alignment="CENTER" layoutX="243" layoutY="20" styleClass="vbox">      
+    <VBox alignment="CENTER" layoutX="220" layoutY="10" styleClass="vbox">      
         <VBox alignment="CENTER">
             <Label styleClass="scoreClass" text="Score : "/>
             <Text styleClass="scoreClass" text="Text: " fx:id="scoreValue"/>
@@ -34,28 +35,22 @@
                 </center>
             </BorderPane>
         </VBox>
-        <Button styleClass="idap-dark-grey" text="New Game" />
         <ToggleButton fx:id="pauseButton" styleClass="idap-dark-grey" text="Pause" />
+        <Text styleClass="helpInfo" wrappingWidth="150">
+                <![CDATA[
+                Use arrow keys (←, ↑, →, ↓) or (A,S,D,W) keys for movement and rotating.
+                ]]>
+        </Text>
+        <Text styleClass="helpInfo" wrappingWidth="150">
+                <![CDATA[
+                N - start new game.
+                ]]>
+        </Text>
             
     </VBox>
     
-    <VBox alignment="CENTER" layoutX="240" layoutY="350" styleClass="vbox">
-        <Text styleClass="helpInfo" wrappingWidth="150">
-            <![CDATA[
-                Use (Up, Down, Left, Right) for movement
-                and rotation. 
-            ]]>
-        </Text>
-        <Text styleClass="helpInfo" wrappingWidth="150">
-            <![CDATA[
-                N - New Game
-            ]]>
-        </Text>
-        <Text styleClass="helpInfo" wrappingWidth="150">
-            <![CDATA[
-                Esc - Pause
-            ]]>
-        </Text>
+    <VBox alignment="TOP_CENTER" layoutX="220" layoutY="300" styleClass="vbox">
+        <ListView fx:id="scoreList" prefHeight="120" prefWidth="152" />
     </VBox>
 
     <Group fx:id ="groupNotification" layoutX="14" layoutY="203">

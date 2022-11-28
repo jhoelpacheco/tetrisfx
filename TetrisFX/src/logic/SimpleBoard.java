@@ -13,7 +13,7 @@ public class SimpleBoard {
     private int currentShape = 0;
     private Point currentOffset;
     private Score score;
-
+    
     public SimpleBoard(int width, int heigth) {
         this.width = width;
         this.heigth = heigth;
@@ -21,7 +21,7 @@ public class SimpleBoard {
         brickGenerator = new RandomBrickGenerator();
         score = new Score();
     }
-    
+   
     public boolean createNewBrick(){
         currentShape = 0;
         Brick currentBrick = brickGenerator.getBrick();
@@ -51,6 +51,45 @@ public class SimpleBoard {
         }
     }
     
+    
+    public boolean moveDownSpace() {
+        
+        
+        Point p = new Point(currentOffset);
+      
+        p.translate(0,(howManyDown()-currentOffset.y)-3);
+        currentOffset = p;
+        boolean conflict = MatrixOperations.intersects(currentGameMatrix,
+                getCurrentShape(),
+                p.x,
+                p.y);
+        
+        if(conflict){
+            return false;
+        }else{
+            currentOffset = p;
+            return true;
+        }
+    }
+    
+    public int howManyDown(){
+        int howMany = 0;
+        int i;
+        
+        for(i=0; i<getBoardMatrix().length; i++){
+            if(getBoardMatrix()[i][currentOffset.x] == 0){
+                howMany ++;                
+            }else{
+                break;
+            }
+        }
+        
+        System.out.println("valor de howmany: "+ howMany);
+        return howMany;
+    }
+    
+   
+        
     public boolean moveBrickLeft() {
         Point p = new Point(currentOffset);
         p.translate(-1,0);
@@ -85,6 +124,20 @@ public class SimpleBoard {
         }
     }
     
+    public boolean rotateBrickLeft() {
+        NextShapeInfo nextShape = getNextShape();
+        boolean conflict = MatrixOperations.intersects(currentGameMatrix,
+                nextShape.getShape(),
+                currentOffset.x,
+                currentOffset.y);
+        if (conflict) {
+            return false;
+        } else {
+            setCurrentShape(nextShape.getPosition());
+            return true;
+        }
+    }
+    
     public ViewData getViewData(){
         return new ViewData(getCurrentShape(),
                 currentOffset.x,
@@ -106,6 +159,12 @@ public class SimpleBoard {
         return score;
     }
     
+    public void newGame() {
+        currentGameMatrix = new int[width][heigth];
+        score.reset();
+        createNewBrick();
+    }
+    
     public int[][] getBoardMatrix(){
         return currentGameMatrix;
     }
@@ -122,20 +181,6 @@ public class SimpleBoard {
         nextShape = ++nextShape % brick.getBrickMatrix().size();
         return new NextShapeInfo(brick.getBrickMatrix().get(nextShape), nextShape);
     }
-    
-    public boolean rotateBrickLeft() {
-        NextShapeInfo nextShape = getNextShape();
-        boolean conflict = MatrixOperations.intersects(currentGameMatrix,
-                nextShape.getShape(),
-                currentOffset.x,
-                currentOffset.y);
-        if (conflict) {
-            return false;
-        } else {
-            setCurrentShape(nextShape.getPosition());
-            return true;
-        }
-    }
 
     public void setCurrentShape(int currentShape) {
         this.currentShape = currentShape;
@@ -148,5 +193,5 @@ public class SimpleBoard {
         return clearRow;
     }
 
-    
+   
 }
