@@ -43,7 +43,7 @@ En aquest sprint hem inclòs les següents funcionalitats:
 
 -Al completar-se la fila fins al cap damunt del taulell acabi la partida amb el missatge "GAME OVER".
 
-![Image text](https://github.com/jhoelpacheco/tetrisfx/blob/main/images/Screenshot_117.png?raw=true])
+![Image text](https://github.com/jhoelpacheco/tetrisfx/blob/main-final/imgTetris.png)
 
 
 
