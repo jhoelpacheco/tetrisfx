@@ -2,7 +2,7 @@ package tetrisfx;
 
 
 import java.net.URL;
-import java.util.Optional;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,14 +15,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.effect.Reflection;
 import javafx.scene.input.KeyCode;
@@ -32,9 +26,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import logic.DownData;
+import logic.SimpleBoard;
 import logic.ViewData;
 import logic.events.EvenType;
 import logic.events.EventSource;
@@ -177,7 +171,7 @@ public class GuiController implements Initializable{
             }
         }
         
-        generatePreviewPanel(viewData.getNextBrickData());
+        //generatePreviewPanel(viewData.getNextBrickData());
     }
 
     @Override
@@ -241,8 +235,18 @@ public class GuiController implements Initializable{
         reflection.setTopOffset(-12);
         scoreValue.setEffect(reflection);
         
-        
-        scoreList.getItems().addAll(GameController.readScores());
+              
+        scoreList.getItems().addAll(addTab(GameController.readScores()));
+    }
+    
+    public static ArrayList<String> addTab(ArrayList<String> a) {
+        ArrayList<String> b = new ArrayList<String>();
+        for (int i = 0; i < a.size(); i++) {
+            String s = a.get(i);
+            s = s.replace(",", "\t\t\t\t");
+            b.add(s);
+        }
+        return b;
     }
 
     private void setRectangleData(int color, Rectangle rectangle) {

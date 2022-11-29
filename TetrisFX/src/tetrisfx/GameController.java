@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Scanner;
-import javafx.beans.property.IntegerProperty;
-import static javafx.beans.property.IntegerProperty.integerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.TextInputDialog;
 import logic.ClearRow;
 import logic.DownData;
@@ -19,12 +16,6 @@ import logic.ViewData;
 import logic.events.EventSource;
 import logic.events.InputEventListener;
 import logic.events.MoveEvent;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 public class GameController implements InputEventListener{
     
@@ -125,7 +116,7 @@ public class GameController implements InputEventListener{
     public static void saveNameAndScore(String nombre, Integer puntuacion){
         ArrayList<String> scores = readScores();
         if(scores.size() < 5){
-            scores.add(nombre + ",\t\t" + puntuacion);
+            scores.add(nombre + "," + puntuacion);
         }else{
             ArrayList<Integer> scoresInt = new ArrayList<Integer>();
             for(int i = 0; i < scores.size(); i++){
@@ -133,7 +124,7 @@ public class GameController implements InputEventListener{
             }
             if( puntuacion > Collections.min(scoresInt)){
                 scores.remove(scoresInt.indexOf(Collections.min(scoresInt)));
-                scores.add(nombre + ",\t\t" + puntuacion);
+                scores.add(nombre + "," + puntuacion);
             }
         }
         try {

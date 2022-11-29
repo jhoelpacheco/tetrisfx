@@ -137,7 +137,7 @@ public class SimpleBoard {
             return true;
         }
     }
-    
+   
     public ViewData getViewData(){
         return new ViewData(getCurrentShape(),
                 currentOffset.x,
